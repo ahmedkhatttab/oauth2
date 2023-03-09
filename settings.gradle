@@ -1,0 +1,6 @@
+rootProject.name = 'oauth2_pro'
+include 'apiGateway'
+include 'eureka'
+include 'albums-service'
+include 'clientapp'
+

@@ -1,0 +1,26 @@
+server:
+  port: 8087
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          albums-app:
+#             we can use issuerUri instead of all the blew keys
+              issuerUri: http://localhost:8082/auth/realms/appsdeveloperblog
+#              authorizationUri: http://localhost:8082/auth/realms/appsdeveloperblog/protocol/openid-connect/auth
+#              tokenUri: http://localhost:8082/auth/realms/appsdeveloperblog/protocol/openid-connect/token
+#              jwkSetUri: http://localhost:8082/auth/realms/appsdeveloperblog/protocol/openid-connect/certs
+#              userInfoUri: http://localhost:8082/auth/realms/appsdeveloperblog/protocol/openid-connect/userinfo
+              userNameAttribute: preferred_username
+        registration:
+          albums-app:
+            authorizationGrantType: authorization_code
+            clientId: photo-app-webclient
+            clientSecret: jgUhp4sLi4rMj53vunEj1PFnFPpAhAKy
+            redirectUri: http://localhost:8087/login/oauth2/code/albums-app
+            scope:
+              - openid
+              - profile
+              - roles
