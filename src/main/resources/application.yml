@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: users-resource-server
+#  main:
+#    allow-bean-definition-overriding: true
+#    allow-circular-references: true
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8082/auth/realms/appsdeveloperblog
+#          jwk-set-uri: http://localhost:8082/auth/realms/appsdeveloperblog/protocol/openid-connect/certs
+
+keycloak:
+  realm: university
+  resource: course-management
+  credentials:
+    secret: xNgG1xu2DD4kf1wtXV7kraSZobwh5IKy
+  auth-server-url: http://localhost:8082/auth
+#  How to write security constrains is very important otherwise it will get 403 response
+  securityConstraints:
+    - authRoles:
+        - '*'
+      securityCollections:
+        - patterns:
+            - /*
+  policy-enforcer-config:
+    httpMethodAsScope: true
+#######################  optional keys
+#  bearer-only: true
+#  ssl-required: external
+#  use-resource-role-mappings: true
+#  policy-enforcer-config:
+#    enforcementMode: ENFORCING
+#    lazyLoadPaths: true
+#######################  optional keys
+
+
+
+logging:
+    level:
+      org.springframework.security: DEBUG
+      org.keycloak.adapters.authorization: DEBUG

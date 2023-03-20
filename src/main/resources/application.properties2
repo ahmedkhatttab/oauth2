@@ -1,0 +1,41 @@
+server.connection-timeout=5000
+server.port = 8080
+
+#keycloak.ssl-required=external
+#keycloak.bearer-only=true
+#keycloak.policy-enforcer-config.lazy-load-paths=true
+#keycloak.policy-enforcer-config.enforcement-mode=enforcing
+
+keycloak.realm=university
+keycloak.auth-server-url=http://localhost:8082/auth
+keycloak.resource=course-management
+
+keycloak.credentials.secret=xNgG1xu2DD4kf1wtXV7kraSZobwh5IKy
+
+# we can use * instead of mentioning all roles
+keycloak.securityConstraints[0].authRoles[0]=*
+#keycloak.securityConstraints[0].authRoles[0]=teacher
+#keycloak.securityConstraints[0].authRoles[1]=ta
+#keycloak.securityConstraints[0].authRoles[2]=student
+#keycloak.securityConstraints[0].authRoles[3]=parent
+
+# we must set security collection patterns --> we can give it  /*
+#keycloak.securityConstraints[0].securityCollections[0].name= anyName
+keycloak.securityConstraints[0].securityCollections[0].patterns[0] = /*
+#keycloak.securityConstraints[0].securityCollections[0].name=course management
+#keycloak.securityConstraints[0].securityCollections[0].patterns[0] = /courses/*
+
+# need to define auth scopes to be (GET, POST, DELETE, PUT) case sensitive
+keycloak.policy-enforcer-config.http-method-as-scope=true
+
+#keycloak.policy-enforcer-config.paths[0].path=/courses/*
+#keycloak.policy-enforcer-config.paths[0].methods[0].method=GET
+#keycloak.policy-enforcer-config.paths[0].methods[0].scopes[0]=view
+#
+#keycloak.policy-enforcer-config.paths[0].methods[1].method=DELETE
+#keycloak.policy-enforcer-config.paths[0].methods[1].scopes[0]=delete
+
+
+
+logging.level.org.springframework.security=DEBUG
+logging.level.org.keycloak.adapters.authorization=DEBUG
