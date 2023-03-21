@@ -17,7 +17,7 @@ public class KeycloakRoleConverter
 //        implements Converter<Jwt, Collection<GrantedAuthority>>
 {
 //    @Bean
-//    public KeycloakConfigResolver keycloakConfigResolver() {
+//    public KeycloakConfigResolverConfig keycloakConfigResolver() {
 //        return new KeycloakSpringBootConfigResolver();
 //    }
 //    @Override

@@ -4,8 +4,8 @@ server:
 spring:
   application:
     name: users-resource-server
-#  main:
-#    allow-bean-definition-overriding: true
+  main:
+    allow-bean-definition-overriding: true
 #    allow-circular-references: true
 #  security:
 #    oauth2:
@@ -37,6 +37,8 @@ keycloak:
 #    enforcementMode: ENFORCING
 #    lazyLoadPaths: true
 #######################  optional keys
+
+
 
 
 
