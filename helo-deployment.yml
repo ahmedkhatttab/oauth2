@@ -1,0 +1,21 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: dep_name
+  labels:
+    dep-nginx: dep-nginx-val
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      pod-label: lpod-label-val
+  template:
+    metadata:
+      labels:
+        pod-label: lpod-label-val
+      spec:
+        containers:
+        - name: web
+          image: nginx
+          ports:
+            - containerPort: 80
